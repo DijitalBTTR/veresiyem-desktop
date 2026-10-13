@@ -57,7 +57,7 @@
       "output": "build"
     },
     "mac": {
-      "icon": "php/assets/img/icon.png",
+      "icon": "php/assets/img/icon512.png",
       "target": [
         {
           "target": "dmg",
