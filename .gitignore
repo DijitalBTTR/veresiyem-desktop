@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+*.log
+.env
+php-bin/
+data/*.db
+data/*.sqlite
+*.exe
+*.dmg

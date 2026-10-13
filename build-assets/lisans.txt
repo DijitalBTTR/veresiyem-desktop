@@ -1,0 +1,15 @@
+VERESIYEM - KULLANIM LISANSI
+============================
+
+Bu yazilim Dijital BT tarafindan gelistirilmistir.
+
+Kurulum sirasinda Windows Guvenlik Uyarisi hakkinda:
+
+"Windows bu uygulamayi tanimiyor" mesaji gorunurse:
+1. "Daha fazla bilgi" linkine tiklayin
+2. "Yine de calistir" butonuna basin
+
+Bu uygulama tamamen guvenlidir. Uyari, uygulamanin
+henuz Microsoft tarafindan taninmamisligindan kaynaklanir.
+
+Sorulariniz icin: existxbilisim@gmail.com

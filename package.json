@@ -1,0 +1,81 @@
+{
+  "name": "veresiyem-offline",
+  "version": "1.0.4",
+  "description": "Veresiyem Offline - Tedarikçi ve Fatura Takip",
+  "author": "Dijital BT <existxbilisim@gmail.com>",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "cmd /c \"set ELECTRON_RUN_AS_NODE=&& node_modules\\electron\\dist\\electron.exe .\"",
+    "build": "cmd /c \"set ELECTRON_RUN_AS_NODE=&& node_modules\\.bin\\electron-builder --win --x64\"",
+    "build:portable": "cmd /c \"set ELECTRON_RUN_AS_NODE=&& node_modules\\.bin\\electron-builder --win portable --x64\"",
+    "dist-mac": "electron-builder --mac --x64"
+  },
+  "build": {
+    "appId": "com.dijitalbt.veresiyem-offline",
+    "productName": "Veresiyem Offline",
+    "win": {
+      "icon": "php/assets/img/icon.ico",
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "installerIcon": "php/assets/img/icon.ico",
+      "uninstallerIcon": "php/assets/img/icon.ico",
+      "installerHeaderIcon": "php/assets/img/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Veresiyem Offline",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "license": "build-assets/lisans.txt",
+      "warningsAsErrors": false,
+      "include": "build-assets/installer.nsh"
+    },
+    "files": [
+      "electron/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "php-bin",
+        "to": "php-bin"
+      },
+      {
+        "from": "php",
+        "to": "php"
+      }
+    ],
+    "directories": {
+      "output": "build"
+    },
+    "mac": {
+      "icon": "php/assets/img/icon.png",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64"]
+        }
+      ],
+      "category": "public.app-category.business"
+    },
+    "dmg": {
+      "title": "Veresiyem Offline"
+    },
+    "publish": null
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  }
+}
