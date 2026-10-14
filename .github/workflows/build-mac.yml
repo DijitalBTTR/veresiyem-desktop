@@ -23,28 +23,15 @@ jobs:
 
       - name: Download PHP for macOS
         run: |
-          brew install php tidy-html5
+          brew install php
           mkdir -p php-bin
           PHP_BIN=$(which php)
           cp "$PHP_BIN" php-bin/php
           chmod +x php-bin/php
-          # Gerekli dylib dosyalarını pakete ekle
-          mkdir -p php-bin/lib
-          cp /opt/homebrew/opt/tidy-html5/lib/libtidy.58.dylib php-bin/lib/ 2>/dev/null || \
-          cp /usr/local/opt/tidy-html5/lib/libtidy.58.dylib php-bin/lib/ 2>/dev/null || true
-          # PHP'nin dylib yolunu güncelle
-          install_name_tool -change \
-            /opt/homebrew/opt/tidy-html5/lib/libtidy.58.dylib \
-            @executable_path/lib/libtidy.58.dylib \
-            php-bin/php 2>/dev/null || true
-          install_name_tool -change \
-            /usr/local/opt/tidy-html5/lib/libtidy.58.dylib \
-            @executable_path/lib/libtidy.58.dylib \
-            php-bin/php 2>/dev/null || true
           printf "extension=pdo_sqlite\nextension=sqlite3\nextension=pdo\nextension=mbstring\nextension=json\n" > php-bin/php.ini
 
       - name: Build macOS DMG
-        run: npx electron-builder --mac --x64
+        run: npx electron-builder --mac --arm64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
