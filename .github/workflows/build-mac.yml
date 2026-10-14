@@ -23,18 +23,20 @@ jobs:
 
       - name: Download PHP for macOS
         run: |
-          brew install php
+          # Static PHP binary indir - tüm kütüphaneler içinde
+          curl -L "https://dl.static-php.dev/static-php-cli/common/php-8.3-cli-macos-x86_64.tar.gz" -o php-static.tar.gz
           mkdir -p php-bin
-          cp $(which php) php-bin/php
+          tar -xzf php-static.tar.gz -C php-bin
+          mv php-bin/php-8.3 php-bin/php 2>/dev/null || true
           chmod +x php-bin/php
-          # php.ini oluştur - SQLite ve gerekli uzantılar
+          # php.ini oluştur
           cat > php-bin/php.ini << 'EOF'
-          extension=pdo_sqlite
-          extension=sqlite3
-          extension=pdo
-          extension=mbstring
-          extension=json
-          EOF
+extension=pdo_sqlite
+extension=sqlite3
+extension=pdo
+extension=mbstring
+extension=json
+EOF
 
       - name: Build macOS DMG
         run: npx electron-builder --mac --x64
